@@ -1,21 +1,18 @@
-import { useState } from 'react'
-import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
-import Hero from './components/hero/Hero'
+import Home from './pages/Home/Home'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <BrowserRouter>
-       <Navbar />
-        <Routes>          
-           <Route path='/' element={<Hero />} />
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+         
         </Routes>
       </BrowserRouter>
-
     </>
   )
 }
