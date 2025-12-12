@@ -6,6 +6,7 @@ import FeaturedCollection from "./FeaturedCollection";
 import BestSellers from "./BestSellers";
 import ExclusiveBrands from "./ExclusiveBrands";
 import CustomerTestimonials from "./CustomerTestimonials";
+import NewsletterSignup from "../../components/layout/NewsletterSignup";
 
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <BestSellers />
       <ExclusiveBrands />
       <CustomerTestimonials />
+      <NewsletterSignup />
      
     </>
   );
