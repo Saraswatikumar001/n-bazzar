@@ -79,7 +79,7 @@ export default function Navbar() {
             <span>|</span>
 
             <li className="relative group cursor-pointer">
-              <Link to="/services">
+              <Link to="/outlets">
                 OUTLETS
                 <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
               </Link>

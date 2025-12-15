@@ -58,7 +58,7 @@ const WhatWeOffer = () => {
                     <p className="text-gray-600 dark:text-gray-400 mt-6 leading-7">
                         N-Bazar provides smart inventory solutions combined with a seamless
                         and secure online shopping experience.
-                    </p>
+                    </p>                    
                 </div>
 
                 {/* FEATURE GRID */}
