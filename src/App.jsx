@@ -1,6 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Home from './pages/Home/Home'
+import Footer from './components/layout/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
+import AboutUs from './pages/about/AboutUs'
 
 
 
@@ -11,8 +14,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
-         
+          <Route path='/about' element={<AboutUs />} />
         </Routes>
+        <WhatsAppButton />
+        <Footer />
       </BrowserRouter>
     </>
   )

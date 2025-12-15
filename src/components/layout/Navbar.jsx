@@ -40,8 +40,7 @@ export default function Navbar() {
 
       {/* 🔴 MAIN NAVBAR */}
       <nav className="bg-[#f3efec] py-4">
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           {/* LOGO */}
           <img
             src={logo}
@@ -53,55 +52,69 @@ export default function Navbar() {
           <ul className="hidden md:flex gap-6 text-[14px] font-semibold tracking-wider text-black">
 
             <li className="relative group cursor-pointer">
-              HOME
-              <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              <Link to="/">
+                HOME
+                <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              </Link>
             </li>
 
             <span>|</span>
 
             <li className="relative group cursor-pointer">
-              ABOUT US
-              <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              <Link to="/about">
+                ABOUT US
+                <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              </Link>
             </li>
 
             <span>|</span>
 
             <li className="relative group cursor-pointer">
-              OUR PRODUCTS
-              <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              <Link to="/products">
+                OUR PRODUCTS
+                <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              </Link>
             </li>
 
             <span>|</span>
 
             <li className="relative group cursor-pointer">
-              OUTLETS
-              <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              <Link to="/services">
+                OUTLETS
+                <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              </Link>
             </li>
 
             <span>|</span>
 
             <li className="relative group cursor-pointer">
-              BLOGS
-              <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              <Link to="/blogs">
+                BLOGS
+                <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              </Link>
             </li>
 
             <span>|</span>
 
             <li className="relative group cursor-pointer">
-              CAREERS
-              <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              <Link to="/careers">
+                CAREERS
+                <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              </Link>
             </li>
 
             <span>|</span>
 
             <li className="relative group cursor-pointer">
-              CONTACT US
-              <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              <Link to="./contact">
+                CONTACT US
+                <div className="absolute left-0 top-6 w-0 h-[3px] bg-red-600 transition-all duration-300 group-hover:w-full"></div>
+              </Link>
             </li>
           </ul>
         </div>
       </nav>
 
-    </header>
+    </header >
   );
 }
