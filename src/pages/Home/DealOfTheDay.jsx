@@ -1,92 +1,75 @@
-import React, { useEffect, useState } from "react";
-import { FaStar } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { ShoppingCart, Settings } from "lucide-react";
+import dealImg from "../../assets/deal.jpeg";
 
 export default function DealOfTheDay() {
-  const [timeLeft, setTimeLeft] = useState(5 * 60 * 60); // 5 hours
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 5,
+    minutes: 12,
+    seconds: 38,
+  });
 
-  // Countdown Logic
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft((t) => (t > 0 ? t - 1 : 0));
+      setTimeLeft((prev) => {
+        let { days, hours, minutes, seconds } = prev;
+        if (seconds > 0) seconds--;
+        else if (minutes > 0) {
+          minutes--;
+          seconds = 59;
+        } else if (hours > 0) {
+          hours--,
+            minutes = 59;
+          seconds = 59;
+
+        } else if (days > 0) {
+          days--;
+          hours = 23;
+          minutes = 59;
+          seconds = 59;
+        }
+        return { days, hours, minutes, seconds };
+      })
     }, 1000);
     return () => clearInterval(timer);
   }, []);
 
-  const formatTime = (t) => {
-    const h = Math.floor(t / 3600);
-    const m = Math.floor((t % 3600) / 60);
-    const s = t % 60;
-    return `${h}h ${m}m ${s}s`;
-  };
-
-  const deal = {
-    id: 1,
-    name: "Women's Festive Embroidered Kurti",
-    img: "https://www.lakshita.com/cdn/shop/articles/Celebrate_in_style_banner.jpg?v=1724929145&utm_source=chatgpt.com",
-    price: "₹599",
-    oldPrice: "₹1199",
-    rating: 4.6,
-    discount: "50% OFF",
-  };
-
   return (
-    <div className="py-14 px-6 md:px-16 bg-gray-50">
-      <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center inline-block relative mx-auto
-        after:content-[''] after:block after:w-24 after:h-1.5 after:bg-[#FF6634] after:mx-auto after:mt-2">
-        Deal of the Day
-      </h2>
+    <section className="relative h-[85vh] w-full bg-cover bg-center flex items-center justify-center"
+      style ={{ backgroundImage: `url(${dealImg})`}}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      {/* Content */}
+      <div className="z-0 text-center text--white px-6">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+          Hurry Up! Get Up to 50% Off
+        </h2>
+        <p className="text-gray-200 max-w-xl mx-auto mb-10">
+          Step into summer with sun-ready styles at can’t-miss prices.
+        </p>
+        {/* Countdown */}
+        <div className="flex justify-center gap-4 mb-10">
+          {[
+            { label: "day", value: timeLeft.days },
+            { label: "hour", value: timeLeft.hours },
+            { label: "minute", value: timeLeft.minutes },
+            { label: "second", value: timeLeft.seconds },
+          ].map((item, index) => (
+            <div key={index}
+              className="bg-white text-black rounded-xl px-6 py-4 w-24 shadow-lg">
+              <p className="text-3xl font-extrabold">
+                {String(item.value).padStart(2, "0")}
+              </p>
+              <span className="text-xs font-semibold text-gray-600">
+                {item.label}
+              </span>
+            </div>
 
-      <p className="text-center text-gray-600 mb-8">
-        Hurry! Limited time offer ends soon.
-      </p>
-
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 md:flex gap-8">
-
-        {/* Product Image */}
-        <div className="w-full md:w-1/2 h-72 overflow-hidden rounded-xl">
-          <img
-            src={deal.img}
-            alt={deal.name}
-            className="w-full h-full object-cover hover:scale-110 transition duration-500"
-          />
+          ))}
         </div>
-
-        {/* Product Details */}
-        <div className="w-full md:w-1/2 flex flex-col justify-between">
-          
-          {/* Title */}
-          <h3 className="text-2xl font-bold text-gray-800">{deal.name}</h3>
-
-          {/* Rating */}
-          <div className="flex items-center gap-1 text-yellow-500 mt-2">
-            <FaStar size={18} />
-            <span className="text-gray-700">{deal.rating}</span>
-          </div>
-
-          {/* Discount Badge */}
-          <span className="mt-3 px-4 py-1 bg-[#FF6634] text-white text-sm rounded-full shadow">
-            {deal.discount}
-          </span>
-
-          {/* Prices */}
-          <div className="mt-4 flex items-center gap-4">
-            <p className="text-3xl font-bold text-[#FF6634]">{deal.price}</p>
-            <p className="text-gray-500 line-through text-lg">{deal.oldPrice}</p>
-          </div>
-
-          {/* Countdown Timer */}
-          <div className="mt-4 inline-block px-4 py-2 bg-black bg-opacity-70 text-white rounded-lg">
-            ⏳ Ends in: <span className="font-bold">{formatTime(timeLeft)}</span>
-          </div>
-
-          {/* Add to Cart */}
-          <button className="mt-6 px-6 py-3 bg-[#FF6634] text-white font-semibold rounded-xl shadow-md hover:bg-orange-600 transition">
-            Add to Cart
-          </button>
-
-        </div>
-
       </div>
-    </div>
-  );
+    </section>
+  )
 }
