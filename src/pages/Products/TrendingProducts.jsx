@@ -1,5 +1,5 @@
 import { FaStar, FaShoppingCart } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 const products = [
   {
     id: 1,
@@ -67,27 +67,22 @@ const products = [
 
 export default function TrendingProducts() {
   return (
-    <section className="py-16 px-6 md:px-16 bg-white">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-4xl font-semibold text-gray-900">
-          Trending products
-        </h2>
-        <button className="text-sm text-gray-500 hover:text-black">
-          View all →
-        </button>
-      </div>
-
-      <div className="border-b mb-10"></div>
-
-      {/* Grid */}
+    <section className="py-16 px-6 md:px-16 bg-white relative z-0">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
         {products.map((product) => (
-          <div key={product.id} className="relative group">
-            
+          <div
+            key={product.id}
+            className="relative group border rounded-lg p-4 hover:shadow-lg transition"
+          >
+            {/* 🔥 FULL CARD CLICK LAYER */}
+            <Link
+              to={`/product/${product.id}`}
+              className="absolute inset-0 z-10"
+            />
+
             {/* Sale badge */}
             {product.sale && (
-              <span className="absolute top-2 left-2 bg-red-500 text-white text-lg px-2 py-0.5 rounded-full">
+              <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded z-20">
                 Sale
               </span>
             )}
@@ -109,26 +104,29 @@ export default function TrendingProducts() {
             </div>
 
             {/* Name */}
-            <h3 className="text-sm text-gray-900 leading-snug">
+            <h3 className="text-sm text-gray-900">
               {product.name}
             </h3>
 
             {/* Price */}
             <div className="flex items-center gap-2 mt-1">
-              <p className="font-semibold text-gray-900">
-                {product.price}
-              </p>
+              <p className="font-semibold">{product.price}</p>
               {product.oldPrice && (
-                <span className="text-sm text-gray-400 line-through">
+                <span className="line-through text-gray-400 text-sm">
                   {product.oldPrice}
                 </span>
               )}
             </div>
 
-            {/* Cart Button */}
+            {/* Cart button (ABOVE link) */}
             <button
-              className="absolute bottom-0 right-0 opacity-0 group-hover:opacity-100
-              transition bg-gray-100 hover:bg-black hover:text-white p-2 rounded"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                alert("Added to cart");
+              }}
+              className="absolute bottom-2 right-2 z-20 bg-gray-100 
+                         hover:bg-black hover:text-white p-2 rounded"
             >
               <FaShoppingCart size={14} />
             </button>

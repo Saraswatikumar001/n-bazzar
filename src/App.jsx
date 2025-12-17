@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 import AboutUs from './pages/about/AboutUs'
 import Products from './pages/Products/Products'
+import ProductDetails from './pages/Products/ProductDetails'
 
 
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<AboutUs />} />
           <Route path='/products' element={<Products />} />  
+          <Route path='/product/:id' element={<ProductDetails />} />
                  
         </Routes>
         <WhatsAppButton />
