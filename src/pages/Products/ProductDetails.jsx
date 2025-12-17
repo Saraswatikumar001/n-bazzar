@@ -5,7 +5,6 @@ import { products } from "../../data/products";
 export default function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-
   const product = products.find((item) => item.id === Number(id));
 
   if (!product) {
@@ -21,11 +20,10 @@ export default function ProductDetails() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
-
       {/* BACK BUTTON */}
       <button
         onClick={() => navigate(-1)}
-        className="text-sm text-blue-900 hover:text-black mb-6"
+        className="text-sm text-blue-500 hover:text-blue mb-6"
       >
         ← Back to Products
       </button>
@@ -66,7 +64,8 @@ export default function ProductDetails() {
 
           {/* Buttons */}
           <div className="flex gap-4 mt-8">
-            <button className="bg-black text-white px-6 py-3 rounded-lg hover:opacity-90">
+            <button onClick={() => navigate ("/cart")}  
+            className="bg-black text-white px-6 py-3 rounded-lg hover:opacity-90">
               Add to Cart
             </button>
             <button className="border px-6 py-3 rounded-lg hover:bg-gray-100">
@@ -76,43 +75,85 @@ export default function ProductDetails() {
         </div>
       </div>
 
-      {/* ================= RELATED PRODUCTS SLIDER ================= */}
+      {/* ================= RELATED PRODUCTS GRID ================= */}
       {relatedProducts.length > 0 && (
         <div className="mt-20">
-          <h2 className="text-2xl font-semibold mb-6">
-            Related Products
-          </h2>
 
-          <div className="overflow-x-auto">
-            <div className="flex gap-6 min-w-full">
-              {relatedProducts.slice(0, 8).map((item) => (
-                <Link
-                  key={item.id}
-                  to={`/product/${item.id}`}
-                  className="
-                    w-[80%] sm:w-[48%] md:w-[32%] lg:w-1/4
-                    flex-shrink-0
-                    border rounded-lg p-4 bg-white
-                    hover:shadow-lg transition
-                  "
+          {/* Header */}
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-semibold">
+              Related Products
+            </h2>
+
+            {/* View All */}
+            <Link
+              to="/products"
+              className="text-sm font-medium text-blue-600 hover:underline"
+            >
+              View All →
+            </Link>
+          </div>
+
+          {/* Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {relatedProducts.slice(0, 4).map((item) => (
+              <div
+                key={item.id}
+                className="group border rounded-xl p-4 bg-white relative
+                     hover:shadow-xl transition overflow-hidden"
+              >
+                {/* Image + Zoom */}
+                <Link to={`/product/${item.id}`}>
+                  <div className="overflow-hidden rounded-lg">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="h-40 w-full object-contain 
+                           transform group-hover:scale-110 transition duration-300"
+                    />
+                  </div>
+                </Link>
+                {/* Hover Actions */}
+                <div
+                  className="absolute inset-0 flex items-center justify-center gap-3
+                       bg-black/40 opacity-0 group-hover:opacity-100
+                       transition"
                 >
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="h-40 mx-auto object-contain"
-                  />
-                  <h3 className="mt-3 text-sm font-medium line-clamp-2">
+                  <button className="bg-white px-4 py-2 text-sm rounded hover:bg-black hover:text-white">
+                    Add to Cart
+                  </button>
+                  <button className="bg-white px-3 py-2 rounded hover:bg-red-500 hover:text-white">
+                    ♥
+                  </button>
+                </div>
+
+                {/* Content */}
+                <div className="mt-4">
+                  <h3 className="text-sm font-medium line-clamp-2">
                     {item.name}
                   </h3>
+
+                  {/* Ratings */}
+                  <div className="flex items-center gap-1 text-orange-400 mt-1">
+                    {Array.from({ length: item.rating || 4 }).map((_, i) => (
+                      <FaStar key={i} size={12} />
+                    ))}
+                    <span className="text-xs text-gray-500 ml-1">
+                      ({item.reviews || 120})
+                    </span>
+                  </div>
+
+                  {/* Price */}
                   <p className="font-semibold mt-1">
                     {item.price}
                   </p>
-                </Link>
-              ))}
-            </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
+
 
       {/* ================= PRODUCT DESCRIPTION (FLIPKART STYLE) ================= */}
       <div className="mt-24 border-t pt-10">

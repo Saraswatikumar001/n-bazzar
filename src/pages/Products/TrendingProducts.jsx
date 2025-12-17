@@ -63,6 +63,34 @@ const products = [
     img: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04",
     rating: 5,
   },
+  {
+    id: 6,
+    name: "Laptop Apple MacBook Pro 13 M2",
+    price: "$1,200.00",
+    img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+    rating: 5,
+  },
+  {
+    id: 7,
+    name: "Wireless Bluetooth Headphones Sony",
+    price: "$357.00",
+    img: "https://images.unsplash.com/photo-1583394838336-acd977736f90",
+    rating: 5,
+  },
+  {
+    id: 8,
+    name: "Tablet Apple iPad Air M1",
+    price: "$899.00 – $1,200.00",
+    img: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04",
+    rating: 5,
+  },
+  {
+    id: 8,
+    name: "Tablet Apple iPad Air M1",
+    price: "$899.00 – $1,200.00",
+    img: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04",
+    rating: 5,
+  },
 ];
 
 export default function TrendingProducts() {

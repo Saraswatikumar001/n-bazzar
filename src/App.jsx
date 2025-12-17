@@ -6,6 +6,7 @@ import WhatsAppButton from './components/WhatsAppButton'
 import AboutUs from './pages/about/AboutUs'
 import Products from './pages/Products/Products'
 import ProductDetails from './pages/Products/ProductDetails'
+import Cart from './pages/Cart/Cart'
 
 
 
@@ -17,9 +18,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<AboutUs />} />
-          <Route path='/products' element={<Products />} />  
+          <Route path='/products' element={<Products />} />
           <Route path='/product/:id' element={<ProductDetails />} />
-                 
+          <Route path="/cart" element={<Cart />} />
         </Routes>
         <WhatsAppButton />
         <Footer />
