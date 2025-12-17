@@ -1,9 +1,11 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { products } from "../../data/products";
+import { useCart } from "../../context/CartContext";
 
 export default function ProductDetails() {
   const { id } = useParams();
+  const { addToCart } = useCart();
   const navigate = useNavigate();
   const product = products.find((item) => item.id === Number(id));
 
@@ -64,12 +66,14 @@ export default function ProductDetails() {
 
           {/* Buttons */}
           <div className="flex gap-4 mt-8">
-            <button onClick={() => navigate ("/cart")}  
-            className="bg-black text-white px-6 py-3 rounded-lg hover:opacity-90">
+            <button
+              onClick={() => {
+                addToCart(product);
+                navigate("/cart");
+              }}
+              className="bg-black text-white px-6 py-3 rounded-lg"
+            >
               Add to Cart
-            </button>
-            <button className="border px-6 py-3 rounded-lg hover:bg-gray-100">
-              Buy Now
             </button>
           </div>
         </div>

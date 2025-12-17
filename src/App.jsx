@@ -7,6 +7,8 @@ import AboutUs from './pages/about/AboutUs'
 import Products from './pages/Products/Products'
 import ProductDetails from './pages/Products/ProductDetails'
 import Cart from './pages/Cart/Cart'
+import Checkout from './pages/Checkout/Checkout'
+
 
 
 
@@ -21,6 +23,7 @@ function App() {
           <Route path='/products' element={<Products />} />
           <Route path='/product/:id' element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
         <WhatsAppButton />
         <Footer />
