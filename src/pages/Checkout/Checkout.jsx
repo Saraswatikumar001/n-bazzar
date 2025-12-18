@@ -16,9 +16,7 @@ export default function Checkout() {
     phone: "",
   });
 
-  const [errors, setErrors] = useState({});
-
- 
+  const [errors, setErrors] = useState({}); 
 
   /* ======================
      SAVE ADDRESS LIVE
@@ -101,14 +99,12 @@ export default function Checkout() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <h1 className="text-3xl font-semibold mb-10">Checkout</h1>
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         {/* LEFT FORM */}
         <div className="lg:col-span-2 space-y-10">
           {/* CONTACT */}
           <section>
             <h2 className="font-semibold mb-3">Contact information</h2>
-
             <FieldWrapper name="email">
               <input
                 name="email"

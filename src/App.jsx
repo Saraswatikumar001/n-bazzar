@@ -8,7 +8,8 @@ import Products from './pages/Products/Products'
 import ProductDetails from './pages/Products/ProductDetails'
 import Cart from './pages/Cart/Cart'
 import Checkout from './pages/Checkout/Checkout'
-
+import Blogs from './pages/blogs/BlogSection'
+import Contact from './pages/Contact'
 
 
 
@@ -24,6 +25,8 @@ function App() {
           <Route path='/product/:id' element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path='/contact' element={<Contact />} />
         </Routes>
         <WhatsAppButton />
         <Footer />
