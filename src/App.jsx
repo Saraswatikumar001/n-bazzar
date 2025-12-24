@@ -10,8 +10,8 @@ import Cart from './pages/Cart/Cart'
 import Checkout from './pages/Checkout/Checkout'
 import Blogs from './pages/blogs/BlogSection'
 import Contact from './pages/Contact'
-
-
+import Careers from './pages/career/Careers'
+import ContactUs from './pages/ContactUs'
 
 function App() {
   return (
@@ -27,6 +27,8 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path='/contact' element={<Contact />} />
+         <Route path='/careers' element={<Careers />} />
+         <Route path='/conatctus' element={<ContactUs />} />
         </Routes>
         <WhatsAppButton />
         <Footer />
