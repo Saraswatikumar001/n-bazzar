@@ -1,40 +1,56 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/layout/Navbar'
-import Home from './pages/Home/Home'
-import Footer from './components/layout/Footer'
-import WhatsAppButton from './components/WhatsAppButton'
-import AboutUs from './pages/about/AboutUs'
-import Products from './pages/Products/Products'
-import ProductDetails from './pages/Products/ProductDetails'
-import Cart from './pages/Cart/Cart'
-import Checkout from './pages/Checkout/Checkout'
-import Blogs from './pages/blogs/BlogSection'
-import Contact from './pages/Contact'
-import Careers from './pages/career/Careers'
-import ContactUs from './pages/ContactUs'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Suspense, lazy } from "react";
+
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
+
+/* LAZY LOADED PAGES */
+const Home = lazy(() => import("./pages/Home/Home"));
+const AboutUs = lazy(() => import("./pages/about/AboutUs"));
+const Products = lazy(() => import("./pages/Products/Products"));
+const ProductDetails = lazy(() => import("./pages/Products/ProductDetails"));
+const Cart = lazy(() => import("./pages/Cart/Cart"));
+const Checkout = lazy(() => import("./pages/Checkout/Checkout"));
+const Blogs = lazy(() => import("./pages/blogs/BlogSection"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Careers = lazy(() => import("./pages/career/Careers"));
+const ContactUs = lazy(() => import("./pages/ContactUs"));
+const CasualWear = lazy(() => import("./pages/CasualWear"));
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
+    <BrowserRouter>
+      <Navbar />
+      <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<AboutUs />} />
-          <Route path='/products' element={<Products />} />
-          <Route path='/product/:id' element={<ProductDetails />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path='/contact' element={<Contact />} />
-         <Route path='/careers' element={<Careers />} />
-         <Route path='/conatctus' element={<ContactUs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/casual" element={<CasualWear />} />
         </Routes>
-        <WhatsAppButton />
-        <Footer />
-      </BrowserRouter>
-    </>
-  )
+      </Suspense>
+
+      <WhatsAppButton />
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
+
+/* SIMPLE LOADER */
+function PageLoader() {
+  return (
+    <div className="min-h-screen flex items-center justify-center text-lg font-semibold">
+      Loading...
+    </div>
+  );
+}

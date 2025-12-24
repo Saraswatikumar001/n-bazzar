@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
     return (
         <footer className="bg-black text-gray-400">
@@ -28,38 +30,34 @@ export default function Footer() {
                 </div>
 
                 {/* Quick Links */}
-                <div className="md:pl-20">
-                    <h3 className="text-white text-lg mb-6">Quick Links</h3>
-                    <ul className="space-y-4 text-sm">
-                        <li className="hover:text-white cursor-pointer">Casual Wear</li>
-                        <li className="hover:text-white cursor-pointer">Office Wear</li>
-                        <li className="hover:text-white cursor-pointer">Party Wear</li>
-                        <li className="hover:text-white cursor-pointer">Resort Wear</li>
-                        <li className="hover:text-white cursor-pointer">New Arrivals</li>
-                        <li className="hover:text-white cursor-pointer">Best Sellers</li>
-                    </ul>
-                </div>
+                <ul className="space-y-4 text-sm">
+                    <FooterLink to="/casual">Casual Wear</FooterLink>
+                    <FooterLink to="/products?category=office">Office Wear</FooterLink>
+                    <FooterLink to="/products?category=party">Party Wear</FooterLink>
+                    <FooterLink to="/products?category=resort">Resort Wear</FooterLink>
+                    <FooterLink to="/products/new">New Arrivals</FooterLink>
+                    <FooterLink to="/products/best-sellers">Best Sellers</FooterLink>
+                </ul>
+
 
                 {/* Policy */}
-                <div className="md:text-left">
+                <div>
                     <h3 className="text-white text-lg mb-6">Policy</h3>
                     <ul className="space-y-4 text-sm">
-                        <li className="hover:text-white cursor-pointer">Privacy Policy</li>
-                        <li className="hover:text-white cursor-pointer">Refund Policy</li>
-                        <li className="hover:text-white cursor-pointer">Shipping Policy</li>
-                        <li className="hover:text-white cursor-pointer">Terms of Service</li>
+                        <FooterLink to="/privacy-policy">Privacy Policy</FooterLink>
+                        <FooterLink to="/refund-policy">Refund Policy</FooterLink>
+                        <FooterLink to="/shipping-policy">Shipping Policy</FooterLink>
+                        <FooterLink to="/terms">Terms of Service</FooterLink>
                     </ul>
                 </div>
             </div>
 
+            {/* Bottom Bar */}
             <div className="relative border-t border-gray-800 py-6 px-6 max-w-7xl mx-auto text-sm flex items-center">
-
-                {/* Center Text */}
                 <span className="absolute left-1/2 -translate-x-1/2 text-center">
-                    All Right Reserved © 2025 N-BAZAR
+                    All Rights Reserved © 2025 N-BAZAR
                 </span>
 
-                {/* Scroll to Top */}
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className="ml-auto w-10 h-10 rounded-full border border-orange-500 flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-black transition"
@@ -67,12 +65,25 @@ export default function Footer() {
                     ↑
                 </button>
             </div>
-
         </footer>
     );
 }
 
-/* Social Icon Component */
+/* Reusable Footer Link */
+function FooterLink({ to, children }) {
+    return (
+        <li>
+            <Link
+                to={to}
+                className="hover:text-white transition cursor-pointer"
+            >
+                {children}
+            </Link>
+        </li>
+    );
+}
+
+/* Social Icon */
 function SocialIcon({ children }) {
     return (
         <div className="w-10 h-10 border border-gray-600 rounded-full flex items-center justify-center hover:border-white hover:text-white cursor-pointer transition">

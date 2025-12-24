@@ -47,7 +47,7 @@ export default function NewArrivals() {
           category: "Women",
           price: "₹1,499",
           rating: 5,
-          img: "https://images.unsplash.com/photo-1520974735194-6c1a2f98a9e2",
+          img: "https://westernera.com/cdn/shop/files/wine-red-party-wear-dress-with-front-pleats-dresses-for-women-2870352.jpg?v=1761751395",
         },
         {
           id: 2,
