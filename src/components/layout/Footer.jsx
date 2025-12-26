@@ -32,8 +32,8 @@ export default function Footer() {
                 {/* Quick Links */}
                 <ul className="space-y-4 text-sm">
                     <FooterLink to="/casual">Casual Wear</FooterLink>
-                    <FooterLink to="/products?category=office">Office Wear</FooterLink>
-                    <FooterLink to="/products?category=party">Party Wear</FooterLink>
+                    <FooterLink to="/officewear">Office Wear</FooterLink>
+                    <FooterLink to="/partywear">Party Wear</FooterLink>
                     <FooterLink to="/products?category=resort">Resort Wear</FooterLink>
                     <FooterLink to="/products/new">New Arrivals</FooterLink>
                     <FooterLink to="/products/best-sellers">Best Sellers</FooterLink>

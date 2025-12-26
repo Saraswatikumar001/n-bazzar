@@ -4,9 +4,7 @@ import RatingStars from "../components/RatingStars";
 import ProductModal from "../components/ProductModal";
 import { useCart } from "../context/CartContext";
 
-/* 🔹 Banner Image (you can change later) */
-const BANNER_IMG =
-  "https://images.unsplash.com/photo-1521335629791-ce4aec67dd47";
+
 
 const PRODUCTS = [
   {
@@ -20,7 +18,7 @@ const PRODUCTS = [
     image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
   },
   {
-    id: 1,
+    id: 2,
     name: "Casual Cotton T-Shirt",
     price: 899,
     sizes: ["S", "M", "L", "XL"],
@@ -31,7 +29,7 @@ const PRODUCTS = [
       "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
   },
   {
-    id: 1,
+    id: 3,
     name: "Casual Cotton T-Shirt",
     price: 899,
     sizes: ["S", "M", "L", "XL"],
@@ -42,7 +40,7 @@ const PRODUCTS = [
       "https://images.unsplash.com/photo-1520975916090-3105956dac38",
   },
   {
-    id: 1,
+    id: 4,
     name: "Casual Cotton T-Shirt",
     price: 899,
     sizes: ["S", "M", "L", "XL"],
@@ -53,7 +51,7 @@ const PRODUCTS = [
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
   },
   {
-    id: 1,
+    id: 5,
     name: "Casual Cotton T-Shirt",
     price: 899,
     sizes: ["S", "M", "L", "XL"],
@@ -64,7 +62,7 @@ const PRODUCTS = [
       "https://images.unsplash.com/photo-1541099649105-f69ad21f3246",
   },
   {
-    id: 1,
+    id: 6,
     name: "Casual Cotton T-Shirt",
     price: 899,
     sizes: ["S", "M", "L", "XL"],
@@ -82,11 +80,11 @@ export default function CasualWear() {
 
   return (
     <section className="bg-gray-50">
-
       {/* 🔥 BANNER */}
       <div
         className="h-[320px] bg-cover bg-center flex items-center justify-center text-white"
-        style={{ backgroundImage: `url(${BANNER_IMG})` }}
+        style={{ backgroundImage: "url(/assets/casual.png)" }}
+
       >
         <div className="bg-black/60 w-full h-full flex items-center justify-center">
           <div className="text-center px-6">
